@@ -1,0 +1,87 @@
+{
+    "MetricAlarms": [
+        {
+            "AlarmName": "order-api-error-rate-critical",
+            "AlarmArn": "arn:aws:cloudwatch:eu-west-3:033216807267:alarm:order-api-error-rate-critical",
+            "AlarmDescription": "Critical: Error rate exceeded 5 errors in 5 minutes. Immediate investigation required — check CloudWatch Logs for stack traces, verify downstream dependencies, consider rollback if tied to a recent deploy.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-08-13T12:41:18.309000+02:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:eu-west-3:033216807267:order-api-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "INSUFFICIENT_DATA",
+            "StateReason": "Insufficient Data: 1 datapoint was unknown.",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-08-13T20:25:15.112+0000\",\"statistic\":\"Sum\",\"period\":300,\"recentDatapoints\":[],\"threshold\":5.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-08-13T20:20:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-08-13T22:25:15.113000+02:00",
+            "MetricName": "ErrorRate",
+            "Namespace": "OrderAPI",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "DatapointsToAlarm": 1,
+            "Threshold": 5.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "missing",
+            "StateTransitionedTimestamp": "2026-08-13T22:25:15.113000+02:00"
+        },
+        {
+            "AlarmName": "order-api-error-rate-warning",
+            "AlarmArn": "arn:aws:cloudwatch:eu-west-3:033216807267:alarm:order-api-error-rate-warning",
+            "AlarmDescription": "Warning: Error rate exceeded 2 errors in 5 minutes. Investigate via CloudWatch Logs Insights, filter level=ERROR, check recent deploys or dependency issues.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-08-13T12:39:04.357000+02:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:eu-west-3:033216807267:order-api-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "INSUFFICIENT_DATA",
+            "StateReason": "Insufficient Data: 1 datapoint was unknown.",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-08-13T20:25:53.704+0000\",\"statistic\":\"Sum\",\"period\":300,\"recentDatapoints\":[],\"threshold\":2.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-08-13T20:20:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-08-13T22:25:53.707000+02:00",
+            "MetricName": "ErrorRate",
+            "Namespace": "OrderAPI",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "DatapointsToAlarm": 1,
+            "Threshold": 2.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "missing",
+            "StateTransitionedTimestamp": "2026-08-13T22:25:53.707000+02:00"
+        },
+        {
+            "AlarmName": "order-api-latency-p95-critical",
+            "AlarmArn": "arn:aws:cloudwatch:eu-west-3:033216807267:alarm:order-api-latency-p95-critical",
+            "AlarmDescription": "Critical: P95 API latency exceeded 1000ms over 5 minutes. Check CPU/memory saturation on the dashboard first, then review Logs Insights for slow-running requests by correlation ID.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-08-13T12:44:12.491000+02:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:eu-west-3:033216807267:order-api-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "INSUFFICIENT_DATA",
+            "StateReason": "Insufficient Data: 1 datapoint was unknown.",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-08-13T20:52:18.780+0000\",\"statistic\":\"p95\",\"period\":300,\"recentDatapoints\":[],\"threshold\":1000.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-08-13T20:47:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-08-13T22:52:18.782000+02:00",
+            "MetricName": "ApiLatencyMs",
+            "Namespace": "OrderAPI",
+            "ExtendedStatistic": "p95",
+            "Dimensions": [],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "DatapointsToAlarm": 1,
+            "Threshold": 1000.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "missing",
+            "StateTransitionedTimestamp": "2026-08-13T22:52:18.782000+02:00"
+        }
+    ],
+    "CompositeAlarms": [],
+    "LogAlarms": []
+}
