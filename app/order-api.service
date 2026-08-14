@@ -1,0 +1,16 @@
+[Unit]
+Description=Order API Node.js application
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/app
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/ubuntu/app/app.out
+StandardError=append:/home/ubuntu/app/app.err
+
+[Install]
+WantedBy=multi-user.target
