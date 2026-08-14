@@ -56,6 +56,7 @@ Requires an IAM role/credentials with `cloudwatch:PutMetricData` permission to p
 - [`MONITORING.md`](./MONITORING.md) — dashboard design and widget explanations
 - [`ALERTING.md`](./ALERTING.md) — alarm strategy, thresholds, and response procedures
 - [`INCIDENTS.md`](./INCIDENTS.md) — the injected CPU-saturation incident, diagnosis, and proposed fixes
+- [`docs/demo-script.md`](./docs/demo-script.md) — the `run-demo.sh` script used for live demonstrations, what it injects, and a timed test run
 
 Presentation slides are submitted separately (not included in this repository).
 
