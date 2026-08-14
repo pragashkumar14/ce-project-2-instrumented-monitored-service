@@ -1,0 +1,246 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 3,
+            "width": 11,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "OrderAPI", "OrdersCreated", { "region": "eu-west-3", "color": "#69ae34" } ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-west-3",
+                "stat": "Sum",
+                "period": 60,
+                "title": "Request Rate (Orders/min)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 11,
+            "y": 3,
+            "width": 13,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "OrderAPI", "ErrorRate", { "region": "eu-west-3", "color": "#fe6e73" } ],
+                    [ ".", "OrdersFailedValidation", { "region": "eu-west-3" } ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-west-3",
+                "stat": "Sum",
+                "period": 300,
+                "title": "Error Rate (Errors + Failed Validations)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 8,
+            "y": 10,
+            "width": 8,
+            "height": 5,
+            "properties": {
+                "metrics": [
+                    [ "OrderAPI", "ApiLatencyMs" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-west-3",
+                "stat": "p95",
+                "period": 300,
+                "title": "API Latency (p95)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 16,
+            "y": 10,
+            "width": 8,
+            "height": 5,
+            "properties": {
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-054afc2f410be3eee" ]
+                ],
+                "region": "eu-west-3",
+                "title": "CPU Utilization (%)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 10,
+            "width": 8,
+            "height": 5,
+            "properties": {
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "CWAgent", "mem_used_percent", "InstanceId", "i-054afc2f410be3eee" ]
+                ],
+                "region": "eu-west-3",
+                "title": "Memory Utilization (%)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 16,
+            "width": 13,
+            "height": 5,
+            "properties": {
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "OrderAPI", "OrderValue" ]
+                ],
+                "region": "eu-west-3",
+                "title": "Average Order Value ($)"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 2,
+            "width": 24,
+            "height": 1,
+            "properties": {
+                "markdown": "## Golden Signals — Traffic & Errors",
+                "background": "transparent"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 9,
+            "width": 24,
+            "height": 1,
+            "properties": {
+                "markdown": "## Golden Signals — Latency & Saturation",
+                "background": "transparent"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 15,
+            "width": 24,
+            "height": 1,
+            "properties": {
+                "markdown": "## Business Signal (alongside the technical picture)",
+                "background": "transparent"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 21,
+            "width": 24,
+            "height": 1,
+            "properties": {
+                "markdown": "## Live Diagnostics",
+                "background": "transparent"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 22,
+            "width": 7,
+            "height": 6,
+            "properties": {
+                "view": "gauge",
+                "metrics": [
+                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-054afc2f410be3eee" ]
+                ],
+                "region": "eu-west-3",
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "max": 100
+                    }
+                },
+                "annotations": {
+                    "horizontal": [
+                        {
+                            "color": "#69ae34",
+                            "label": "Untitled annotation",
+                            "value": 70,
+                            "fill": "below"
+                        },
+                        {
+                            "color": "#dfb52c",
+                            "label": "Warning",
+                            "value": 85,
+                            "fill": "below"
+                        },
+                        {
+                            "color": "#fe6e73",
+                            "label": "Critical",
+                            "value": 85,
+                            "fill": "above"
+                        }
+                    ]
+                },
+                "title": "CPU Utilization (Live)"
+            }
+        },
+        {
+            "type": "log",
+            "x": 7,
+            "y": 22,
+            "width": 17,
+            "height": 6,
+            "properties": {
+                "query": "SOURCE logGroups(namePrefix: [\"/ce-lab/app-logging\"], class: \"STANDARD\") |\nfields @timestamp, level, message, correlation_id\n| filter level = \"error\"\n| sort @timestamp desc\n| limit 10",
+                "region": "eu-west-3",
+                "stacked": false,
+                "view": "table",
+                "title": "Recent Errors (Logs Insights)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 13,
+            "y": 16,
+            "width": 11,
+            "height": 5,
+            "properties": {
+                "metrics": [
+                    [ "OrderAPI", "OrdersCreated", { "region": "eu-west-3" } ]
+                ],
+                "sparkline": true,
+                "view": "singleValue",
+                "region": "eu-west-3",
+                "period": 300,
+                "stat": "Sum",
+                "title": "Total Orders Processed"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 2,
+            "properties": {
+                "markdown": "# Order API — Observability Dashboard\n   **Instance:** i-054afc2f410be3eee | **Log group:** /ce-lab/app-logging | **Region:** eu-west-3"
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 28,
+            "width": 24,
+            "height": 2,
+            "properties": {
+                "markdown": "---\n**Questions or issues?** Contact Pragash Kumaravel (Cloud/DevOps Engineer) at pragash_m@hotmail.co.uk · See `runbook.md` and `ALERTING.md` in the project repository for troubleshooting steps and alert response procedures."
+            }
+        }
+    ]
+}
