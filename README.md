@@ -20,11 +20,12 @@ See `ARCHITECTURE.md` for the full diagram and component breakdown.
 |---|---|
 | Structured JSON logging with correlation IDs | ✅ |
 | 5 custom CloudWatch metrics (business + technical) | ✅ |
-| CloudWatch dashboard with Golden Signals | ✅ (6 widgets) |
+| CloudWatch dashboard with Golden Signals | ✅ (8 widgets) |
 | Tiered CloudWatch alarms + SNS email alerting | ✅ (3 alarms + 1 composite) |
 | Incident response simulation (injected failure, diagnosed) | ✅ |
 | Metric filters deriving metrics from logs | ✅ (Should Have) |
 | Composite alarm | ✅ (Should Have) |
+| Auto-remediation Lambda (enriched alerting) | ✅ (Should/Nice to Have) |
 
 ## How to run it
 
@@ -55,6 +56,8 @@ Requires an IAM role/credentials with `cloudwatch:PutMetricData` permission to p
 - [`MONITORING.md`](./MONITORING.md) — dashboard design and widget explanations
 - [`ALERTING.md`](./ALERTING.md) — alarm strategy, thresholds, and response procedures
 - [`INCIDENTS.md`](./INCIDENTS.md) — the injected CPU-saturation incident, diagnosis, and proposed fixes
+
+Presentation slides are submitted separately (not included in this repository).
 
 ## Screenshots
 
